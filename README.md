@@ -18,7 +18,7 @@ This project was bootstrapped with [Create React App](https://github.com/faceboo
 - Run `npm i`
 - Run the Proxy
   1. `docker build -t vascular-react .`
-  2. `docker run -d  --name vascular-react -p 8080:8080 -p 9901:9901 grpc-web-react`
+  2. `docker run -d  --name vascular-react -p 8080:8080 -p 9901:9901 vascular-react`
 Note: in case of running on Mac M1 add the `--platform=linux/amd64` flag to each docker command.
 - Run `npm start`
 
