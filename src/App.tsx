@@ -1,11 +1,19 @@
 import React, { useState, useEffect } from 'react';
 import logo from './logo.svg';
 
-import Vascular, { Language } from 'vascular-web';
+import Vascular, { Language, 
+  InboxMessage, 
+  MessageAction, 
+  MessageMedia,
+  MessageData, 
+  Provider, 
+  Type, 
+  SFMC,
+  } from 'vascular-web';
 import './App.css';
 
-const userId = "<user-id>";
 const appKey = "<app-key>";
+const userId = "<user-id>";
 function Message(props: any) {
   const vascular = new Vascular(appKey, userId, [Language.ENUS, Language.NB]);
   const [inboxMessageData, setinboxMessageData] = useState<any>({});
