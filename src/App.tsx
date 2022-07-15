@@ -1,5 +1,4 @@
 import React, { useState, useEffect } from "react";
-import logo from "./logo.svg";
 
 import Vascular, {
   Language,
@@ -13,8 +12,8 @@ import Vascular, {
 } from "vascular-web";
 import "./App.css";
 
-const appKey = "OWZkZjZhM2UtMTIyMy00YWY1LWEzOTItYjIwY2E1NDk0MDBj";
-const userId = "112233456";
+const appKey = "<app_key>";
+const userId = "<user_id>";
 
 const vascular = new Vascular(appKey, userId, []);
 
@@ -85,21 +84,28 @@ function InboxNext() {
 }
 
 function GetMessageById() {
+  const [id, setId] = useState("");
+
   const getMessageById = async () => {
     try {
-      const message = await vascular.getMessageById(
-        "9169acf2-74d7-4a90-bc0f-0e835e85f19c"
-      );
+      const message = await vascular.getMessageById(id);
       console.log("message by id", message);
     } catch (e) {
       console.error(e);
     }
   };
 
-  return <button onClick={getMessageById}>Get message by id</button>;
+  return (
+    <div>
+      <input value={id} onChange={(e) => setId(e.target.value)} />
+      <button onClick={getMessageById}>Get message by id</button>
+    </div>
+  );
 }
 
 function ReadMessages() {
+  const [ids, setIds] = useState("");
+
   const readMessages = async () => {
     try {
       const message = await vascular.readMessages([
@@ -111,37 +117,62 @@ function ReadMessages() {
     }
   };
 
-  return <button onClick={readMessages}>Read messages</button>;
+  return (
+    <div>
+      <input
+        placeholder="comma separated ids"
+        value={ids}
+        onChange={(e) => setIds(e.target.value)}
+      />
+      <button onClick={readMessages}>Read messages</button>
+    </div>
+  );
 }
 
 function OpenMessages() {
+  const [ids, setIds] = useState("");
+
   const openMessages = async () => {
     try {
-      const message = await vascular.readMessages([
-        "9169acf2-74d7-4a90-bc0f-0e835e85f19c",
-      ]);
+      const message = await vascular.readMessages(
+        ids.split(",").map((id) => id.trim())
+      );
       console.log("open messages", message);
     } catch (e) {
       console.error(e);
     }
   };
 
-  return <button onClick={openMessages}>Open messages</button>;
+  return (
+    <div>
+      <input
+        placeholder="comma separated ids"
+        value={ids}
+        onChange={(e) => setIds(e.target.value)}
+      />
+      <button onClick={openMessages}>Open messages</button>
+    </div>
+  );
 }
 
 function DeleteMessage() {
+  const [id, setId] = useState("");
+
   const deleteMessage = async () => {
     try {
-      const message = await vascular.deleteMessage(
-        "3881c768-6f3d-4335-870d-14d38e3e0389"
-      );
+      const message = await vascular.deleteMessage(id);
       console.log("delete message by id", message);
     } catch (e) {
       console.error(e);
     }
   };
 
-  return <button onClick={deleteMessage}>Delete message by id</button>;
+  return (
+    <div>
+      <input value={id} onChange={(e) => setId(e.target.value)} />
+      <button onClick={deleteMessage}>Delete message by id</button>
+    </div>
+  );
 }
 
 function AddTags() {
