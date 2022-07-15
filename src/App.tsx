@@ -9,11 +9,11 @@ import Vascular, {
   MessageMedia,
   Provider,
   Type,
-} from "vascular-web";
+} from "vascular-js";
 import "./App.css";
 
-const appKey = "<app_key>";
-const userId = "<user_id>";
+const appKey = "<app-key>";
+const userId = "<user-id>";
 
 const vascular = new Vascular(appKey, userId, []);
 
