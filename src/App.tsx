@@ -12,8 +12,8 @@ import Vascular, {
 } from "vascular-js";
 import "./App.css";
 
-const appKey = "<app-key>";
-const userId = "<user-id>";
+const appKey = "OWZkZjZhM2UtMTIyMy00YWY1LWEzOTItYjIwY2E1NDk0MDBj";
+const userId = "112233456";
 
 const vascular = new Vascular(appKey, userId, []);
 
